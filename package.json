@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "cy:tests": "npx cypress run --browser chrome --spec ./cypress/e2e/Tests/**.feature --headed"
+  },
+  "devDependencies": {
+    "cypress": "^13.16.0",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "cucumberJson": {
+      "generate": true
+    },
+    "step_definitions": "cypress/e2e/Tests"
+  }
+}
