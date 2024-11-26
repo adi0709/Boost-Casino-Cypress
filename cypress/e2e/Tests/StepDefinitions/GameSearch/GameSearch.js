@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
 import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
-import GameHomePage from "../../../../POM/Pages/gameHomePage";
+import GameHomePage from "../../../../support/POM/Pages/gameHomePage";
+import BookOfDeadGamePage from "../../../../support/POM/Pages/bookOfDeadGamePage";
 
 const gameHomePage = new GameHomePage();
+const  bookOfDeadGamePage= new BookOfDeadGamePage();
 before(()=>{
 
     //Adding a cookie to make sure the GDPR prompt is not received again and again
@@ -14,7 +16,7 @@ before(()=>{
     });
 })
 
-Given("the user navigates to the website", () => {
+Given("the user is on the Boost Casino homepage", () => {
     gameHomePage.visit()
 });
 
@@ -31,5 +33,5 @@ When("the play button is clicked",()=>{
 })
 
 Then("the game starts to load",()=>{
-    gameHomePage.verifyGameLoading()
+    bookOfDeadGamePage.verifyGameLoading()
 })
