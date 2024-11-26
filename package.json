@@ -11,6 +11,6 @@
     "cucumberJson": {
       "generate": true
     },
-    "step_definitions": "cypress/e2e/Tests"
+    "step_definitions": "cypress/e2e/Tests/StepDefinitions"
   }
 }

@@ -16,3 +16,9 @@ report
 *.iws
 *.iml
 *.ipr
+
+### Cucumber json files
+cucumber-json
+
+### Screenshots of failures
+screenshots
