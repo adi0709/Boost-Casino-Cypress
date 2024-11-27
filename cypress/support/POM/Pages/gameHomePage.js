@@ -7,6 +7,9 @@ class GameHomePage {
         this.playButton = "[type='button']";
         this.languageDropdow = "[data-cy='navDropdown-language']"
         this.languageOption = "[data-af='nav']"
+        this.mobileNavigationBurger = ".af-header-mobile-menu-trigger"
+        this.navMenu = "[data-af='nav']"
+        this.navItems = "ul li"
     }
 
     // Method to visit the home page
@@ -89,8 +92,12 @@ class GameHomePage {
         }).as("languageUpdateComplete")
 
         cy.get(this.languageOption)
-            .first().should("be.visible", "Validating the language option dropdown navigation is visible")
-            .within((el) => {
+            .first()
+            .should("be.visible", "Validating the language option dropdown navigation is visible")
+
+        cy.get(this.languageOption)
+            .first()
+            .within(() => {
                 cy.get("li").should("have.length", 3, "Validating the list has 3 language elements in the list except for the selected one")
                 cy.contains(languageName).click();
             })
@@ -116,6 +123,7 @@ class GameHomePage {
     validateUrlAfterLanguageUpdate(languageName) {
         cy.url().should("eq", `${Cypress.config().baseUrl}${languageName.toLowerCase()}`, "Validating the URL has the language name in the URL itself");
     }
+
 }
 
 export default GameHomePage;
