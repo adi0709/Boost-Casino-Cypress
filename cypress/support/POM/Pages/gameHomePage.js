@@ -7,9 +7,6 @@ class GameHomePage {
         this.playButton = "[type='button']";
         this.languageDropdow = "[data-cy='navDropdown-language']"
         this.languageOption = "[data-af='nav']"
-        this.mobileNavigationBurger = ".af-header-mobile-menu-trigger"
-        this.navMenu = "[data-af='nav']"
-        this.navItems = "ul li"
     }
 
     // Method to visit the home page
@@ -28,7 +25,7 @@ class GameHomePage {
         cy.url().should("eq", Cypress.config().baseUrl)
 
         //Waiting for the request for the loading of the site to complete
-        cy.wait("@lastRequest", {timeout: 5000})
+        cy.wait("@lastRequest", {timeout: 10000})
             .its("response.statusCode")
             .should("eq", 204);
     }
@@ -48,7 +45,7 @@ class GameHomePage {
         //Typing the name of the game in the search box
         cy.get(this.searchInput).type(gameName);
 
-        cy.wait("@searchGame", {timeout: 5000})
+        cy.wait("@searchGame", {timeout: 10000})
     }
 
     // Method to verify games appear in search results

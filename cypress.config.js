@@ -10,7 +10,7 @@ module.exports = defineConfig({
         viewportWidth: 1280,
         viewportHeight: 800,
         baseUrl: "https://www.boostcasino.com/",
-        setupNodeEvents(on, config) {
+        setupNodeEvents(on) {
             on("file:preprocessor", cucumber());
         },
     },

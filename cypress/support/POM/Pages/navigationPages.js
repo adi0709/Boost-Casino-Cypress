@@ -2,7 +2,8 @@ class NavigationPages {
     constructor() {
         this.mobileNavigationBurger = ".af-header-mobile-menu-trigger"
         this.navMenu = "[data-af='nav']"
-        this.navItems = "ul li"
+        this.navItems = "li"
+        this.subNav = "[data-af='sub-nav']"
     }
 
     //Getting the navigation burger and validating its visibility
@@ -16,7 +17,7 @@ class NavigationPages {
             .should("be.visible")
             .click();
 
-        cy.wait("@menuImage")
+        cy.wait("@menuImage", {timeout: 10000})
     }
 
     //Validating the navigation menu
@@ -44,7 +45,7 @@ class NavigationPages {
                             .invoke("text")
                             .then((text) => {
                                 //Making the assertion on the text with the navItems we will get from gherkin examples
-                                expect(text).to.include(navItem[index]);
+                                expect(text.trim()).to.include(navItem[index]);
                             })
                     })
             })
@@ -70,10 +71,20 @@ class NavigationPages {
             })
     }
 
-    //TODO: Need to add more assertions to this block
+
     //Validate Casino Navigation Items
     validateCasinoNavItem(navItem) {
 
+        cy.get(this.subNav).within(() => {
+            cy.get(this.navItems)
+                .each(($el, index) => {
+                    cy.wrap($el)
+                        .invoke("text")
+                        .then((text) => {
+                            expect(text.trim()).to.eq(navItem[index], `Validate if the ${index + 1} item in the subNav is ${navItem[index]}`);
+                        })
+                })
+        })
     }
 }
 

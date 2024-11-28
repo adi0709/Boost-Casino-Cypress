@@ -1,22 +1,16 @@
 /// <reference types="cypress" />
-import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
+import {And, Then, When} from "cypress-cucumber-preprocessor/steps";
 import GameHomePage from "../../../../support/POM/Pages/gameHomePage";
 import BookOfDeadGamePage from "../../../../support/POM/Pages/bookOfDeadGamePage";
+import SettingCookie from "../../../../support/SettingCookie";
 
 const gameHomePage = new GameHomePage();
-const  bookOfDeadGamePage= new BookOfDeadGamePage();
-before(()=>{
-
-    //Adding a cookie to make sure the GDPR prompt is not received again and again
-    const COOKIE_NAME = "CookieConsent";
-    const COOKIE_VALUE = true
-
-    Cypress.on("window:before:load", window => {
-        window.document.cookie = `${COOKIE_NAME}=${COOKIE_VALUE}`;
-    });
-})
+const bookOfDeadGamePage = new BookOfDeadGamePage();
+const settingCookies = new SettingCookie();
 
 Given("the user is on the Boost Casino homepage", () => {
+    //Setting up the GDPR cookie value
+    settingCookies.setGdprCookies()
     gameHomePage.visit()
 });
 
@@ -28,10 +22,10 @@ And("the game with name {string} is displayed", (gameName) => {
     gameHomePage.verifyGameInResults(gameName)
 });
 
-When("the play button is clicked",()=>{
+When("the play button is clicked", () => {
     gameHomePage.clickPlay()
 })
 
-Then("the game starts to load",()=>{
+Then("the game starts to load", () => {
     bookOfDeadGamePage.verifyGameLoading()
 })

@@ -3,23 +3,17 @@ import {And} from "cypress-cucumber-preprocessor/steps";
 import GameHomePage from "../../../../support/POM/Pages/gameHomePage";
 import CustomerPage from "../../../../support/POM/Pages/CustomerPage";
 import NavigationPages from "../../../../support/POM/Pages/navigationPages";
+import SettingCookie from "../../../../support/SettingCookie";
 
 const gameHomePage = new GameHomePage();
 const customerPage = new CustomerPage();
 const navigationPages = new NavigationPages();
-
-
-Given("the GDPR cookies are provided", () => {
-    //Adding a cookie to make sure the GDPR prompt is not received again and again
-    const COOKIE_NAME = "CookieConsent";
-    const COOKIE_VALUE = true
-    Cypress.on("window:before:load", window => {
-        window.document.cookie = `${COOKIE_NAME}=${COOKIE_VALUE}`;
-    });
-})
+const settingCookies = new SettingCookie();
 
 Given("the user is on the Boost Casino homepage using a mobile device", () => {
     cy.viewport("iphone-x")
+    //Setting up the GDPR cookie value
+    settingCookies.setGdprCookies()
     gameHomePage.visit();
 })
 
@@ -44,6 +38,5 @@ When("the user clicks on {string}", (casinoNavItem) => {
 
 Then("the user should see the following casino categories", (dataTable) => {
     const casinoNavItems = dataTable.rawTable.flat();
-
     navigationPages.validateCasinoNavItem(casinoNavItems)
 });
