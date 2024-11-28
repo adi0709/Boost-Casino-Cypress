@@ -17,8 +17,9 @@ report
 *.iml
 *.ipr
 
-### Cucumber json files
+### Cucumber files
 cucumber-json
+cucumber-report
 
 ### Screenshots of failures
 screenshots

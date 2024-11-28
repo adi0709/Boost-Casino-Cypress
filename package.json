@@ -1,16 +1,20 @@
 {
   "scripts": {
-    "cy:tests": "npx cypress run --browser chrome --spec ./cypress/e2e/Tests/**.feature --headed"
+    "cy:tests": "npx cypress run --browser chrome --spec ./cypress/e2e/Tests/**.feature --headed",
+    "cy:report": "node ./cypress/report.js",
+    "cy:testReport": "npx cypress run --browser chrome --spec './cypress/e2e/Tests/Features/*.feature' ; npm run cy:report"
   },
   "devDependencies": {
     "cypress": "^13.16.0",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "multiple-cucumber-html-reporter": "^3.8.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "cucumberJson": {
       "generate": true
     },
+    "html": true,
     "step_definitions": "cypress/e2e/Tests/StepDefinitions"
   }
 }
