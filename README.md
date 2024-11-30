@@ -21,6 +21,7 @@ The project is organized as follows:
 │   │   └── report.js # Custom reporter for generating HTML reports
 │   └── settingsCookie.js # File to handle GDPR consent/cookies
 ├── package.json      # NPM package configuration
+├── cypress.config.js # Cypress configurations
 
 ```
 
