@@ -7,11 +7,6 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [ 1, 2 ] # Runs tests in 2 parallel instances
-
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
@@ -33,8 +28,6 @@ jobs:
         with:
           browser: chrome
           headless: true
-          parallel: true
-          group: "matrix-${{ matrix.containers }}" # Name each group
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
 
