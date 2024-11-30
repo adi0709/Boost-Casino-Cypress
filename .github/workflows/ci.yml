@@ -24,7 +24,7 @@ jobs:
 
       # Step 4: Run Cypress tests
       - name: Run Cypress Tests
-        run: npm cypress run
+        run: npx cypress run
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
 
