@@ -1,5 +1,8 @@
 name: End-to-end tests
-on: [ push ]
+
+on:
+  push:
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -7,15 +10,40 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [ 1, 2 ] # Uses 2 parallel instances
+        containers: [ 1, 2 ] # Runs tests in 2 parallel instances
+
     steps:
-      - name: Checkout
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Cypress run
+      # Step 4: Run Cypress tests
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          headless: true
+          parallel: true
+          group: "matrix-${{ matrix.containers }}" # Name each group
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
+
+      # Step 5: Upload Cypress screenshots and videos (artifacts)
+      - name: Upload Cypress Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
