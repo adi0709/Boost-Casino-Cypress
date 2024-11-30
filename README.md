@@ -2,7 +2,7 @@
 
 This repository contains a Cypress-based test automation framework for executing end-to-end tests written in Gherkin
 syntax (Cucumber). The framework utilizes the **cypress-cucumber-preprocessor** for parsing `.feature` files, *
-*multiple-cucumber-html-reporter** for generating HTML reports, and GitHub Actions for continuous integration.
+*multiple-cucumber-html-reporter** for generating HTML reports.
 
 ## Project Structure
 
