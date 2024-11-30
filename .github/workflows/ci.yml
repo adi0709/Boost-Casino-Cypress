@@ -19,4 +19,3 @@ jobs:
         uses: cypress-io/github-action@v6
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: npm run cy:testReport
