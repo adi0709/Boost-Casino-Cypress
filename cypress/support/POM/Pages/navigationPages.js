@@ -14,7 +14,7 @@ class NavigationPages {
         }).as("menuImage")
 
         cy.get(this.mobileNavigationBurger)
-            .should("be.visible")
+            .should("be.visible", "Validating the navigation menu menu menu is visible")
             .click();
 
         cy.wait("@menuImage", {timeout: 10000})
@@ -45,7 +45,7 @@ class NavigationPages {
                             .invoke("text")
                             .then((text) => {
                                 //Making the assertion on the text with the navItems we will get from gherkin examples
-                                expect(text.trim()).to.include(navItem[index]);
+                                expect(text.trim()).to.include(navItem[index], "Validating the text is the same as we expect from gherkin examples");
                             })
                     })
             })

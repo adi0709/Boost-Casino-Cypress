@@ -8,7 +8,7 @@ class CustomerPage {
 
         //Validating the H1 title has the correct text
         //Using Contains since data-cy tag is not attached to any element
-        cy.contains("Hello. What can we help you with?").should("be.visible")
+        cy.contains("Hello. What can we help you with?").should("be.visible", "Validating the page has the following text on it")
     }
 }
 

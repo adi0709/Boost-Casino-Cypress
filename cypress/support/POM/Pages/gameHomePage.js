@@ -57,7 +57,7 @@ class GameHomePage {
 
                 cy.get(this.gameText).should(($el) => {
                     const actualText = $el.text().toLowerCase();
-                    expect(actualText).to.include(gameName.toLowerCase());
+                    expect(actualText).to.include(gameName.toLowerCase(), "Validate the name game after search is correct");
                 });
             })
     }
@@ -70,7 +70,7 @@ class GameHomePage {
             .first()
             .within(() => {
                 cy.get(this.playButton)
-                    .should("contain.text", "Play")
+                    .should("contain.text", "Play", "Validating the play button has the correct text")
                     .click();
             });
     }
@@ -85,7 +85,7 @@ class GameHomePage {
     selectLanguage(languageName) {
         cy.intercept({
             method: "POST",
-            url: "/api/casino/jackpots/pots"
+            url: "/api/13/envelope/?sentry_key=**"
         }).as("languageUpdateComplete")
 
         cy.get(this.languageOption)

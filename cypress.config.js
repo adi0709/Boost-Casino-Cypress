@@ -5,6 +5,8 @@ module.exports = defineConfig({
     e2e: {
         specPattern: "**/*.feature",
         chromeWebSecurity: false,
+        video: true,
+        screenshotOnRunFailure: true,
         html: {
             enabled: true,
         },
