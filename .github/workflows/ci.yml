@@ -25,9 +25,6 @@ jobs:
       # Step 4: Run Cypress tests
       - name: Run Cypress Tests
         run: npm cypress run
-        with:
-          browser: chrome
-          headless: true
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
 
