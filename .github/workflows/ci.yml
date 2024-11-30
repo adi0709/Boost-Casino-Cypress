@@ -24,7 +24,7 @@ jobs:
 
       # Step 4: Run Cypress tests
       - name: Run Cypress Tests
-        uses: cypress-io/github-action@v6
+        run: npm cypress run
         with:
           browser: chrome
           headless: true
