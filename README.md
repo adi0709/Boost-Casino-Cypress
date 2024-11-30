@@ -21,9 +21,6 @@ The project is organized as follows:
 │   │   └── report.js # Custom reporter for generating HTML reports
 │   └── settingsCookie.js # File to handle GDPR consent/cookies
 ├── package.json      # NPM package configuration
-├── .github           # GitHub Actions for CI/CD
-    └── workflows
-        └── test.yml  # GitHub Actions workflow to run tests on push
 
 ```
 
@@ -77,12 +74,3 @@ npm run cy:testReport
   multiple-cucumber-html-reporter to provide a detailed view of the test results.
 - `support/settingsCookie.js`: This file handles cookies and consent for testing, ensuring that tests are compliant with
   cookie consent requirements.
-
-## Continuous Integration with GitHub Actions
-
-The workflow defined in `.github/workflows/test.yml` will:
-
-- Trigger on `push` events to the repository.
-- Set up Node.js and install dependencies.
-- Run the Cypress tests using `npm run cy:testReport`.
-- Upload the generated HTML report as an artifact.
