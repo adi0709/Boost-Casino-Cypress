@@ -2,7 +2,7 @@
   "scripts": {
     "cy:tests": "npx cypress run --browser chrome --spec ./cypress/e2e/Tests/**.feature --headed",
     "cy:report": "node cypress/support/Reporter/report.js",
-    "cy:testReport": "npx cypress run --browser chrome --headed --spec './cypress/e2e/Tests/Features/*.feature' && npm run cy:report"
+    "cy:testReport": "npx cypress run --browser chrome --headed --spec './cypress/e2e/Tests/Features/*.feature' ; npm run cy:report"
   },
   "devDependencies": {
     "cypress": "^13.16.0",
