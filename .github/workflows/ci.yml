@@ -11,5 +11,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+        run: npm run cy:testReport
