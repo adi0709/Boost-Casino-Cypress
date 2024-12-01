@@ -34,10 +34,10 @@ The project is organized as follows:
 
 ## Prerequisites
 
-Make sure you have the following installed on your system:
+Make sure you have the following requirements are met as pre requisites:
 
-- [Node.js](https://nodejs.org/)
-- npm (Node Package Manager)
+- Install [Node.js](https://nodejs.org/)
+- Install npm (Node Package Manager, comes with Node)
 - Install [Java](https://www.java.com/en/download/help/download_options.html)
 - Add Java to environment paths from this [documentation](https://www.java.com/en/download/help/path.html)
 - Verify java was installed
