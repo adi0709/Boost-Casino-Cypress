@@ -2,7 +2,7 @@
 
 This repository contains a Cypress-based test automation framework for executing end-to-end tests written in Gherkin
 syntax (Cucumber). The framework utilizes the **cypress-cucumber-preprocessor** for parsing `.feature` files, *
-*multiple-cucumber-html-reporter** for generating HTML reports.
+*multiple-cucumber-html-reporter** and **@mmisty/cypress-allure-adapter** for generating HTML reports.
 
 ## Project Structure
 
@@ -49,7 +49,8 @@ npm install
 
 ## Executing Tests
 
-You can run the Cypress tests locally using the following NPM script:
+1. **You can run the Cypress tests locally and generate multiple-cucumber-html-reporter using the following NPM script:
+   **
 
 ```bash
 npm run cy:testReport
@@ -61,6 +62,20 @@ npm run cy:testReport
   cypress/e2e/Tests/Features.
 - Generates the HTML report: After the tests are complete, a detailed HTML report will be generated using the
   multiple-cucumber-html-reporter and saved in the cucumber-report folder.
+- Opens the report automatically: The report will be opened in your default web browser automatically.
+
+2. **You can run the Cypress tests locally and generate allure report using the following NPM script:**
+
+```bash
+npm run cy:testReport
+```
+
+## What it does:
+
+- Runs the Cypress tests: The tests will be executed in Chrome using the .feature files located under
+  cypress/e2e/Tests/Features.
+- Generates the HTML report: After the tests are complete, a detailed HTML report will be generated using the
+  @mmisty/cypress-allure-adapter and saved in the allure-results folder.
 - Opens the report automatically: The report will be opened in your default web browser automatically.
 
 ## Folder Structure Explained

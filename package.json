@@ -2,9 +2,12 @@
   "scripts": {
     "cy:tests": "npx cypress run --browser chrome --spec ./cypress/e2e/Tests/**.feature --headed",
     "cy:report": "node cypress/support/Reporter/report.js",
-    "cy:testReport": "npx cypress run --browser chrome --headed --spec './cypress/e2e/Tests/Features/*.feature' ; npm run cy:report"
+    "cy:testReport": "npx cypress run --browser chrome --headed --spec './cypress/e2e/Tests/Features/*.feature' ; npm run cy:report",
+    "cy:testAllureReport": "npx cypress run --browser chrome --headed --spec './cypress/e2e/Tests/Features/*.feature' ; allure serve"
   },
   "devDependencies": {
+    "@mmisty/cypress-allure-adapter": "^3.2.2",
+    "allure-commandline": "^2.32.0",
     "cypress": "^13.16.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "multiple-cucumber-html-reporter": "^3.8.0"
