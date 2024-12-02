@@ -34,7 +34,7 @@ The project is organized as follows:
 
 ## Prerequisites
 
-Make sure you have the following requirements are met as pre requisites:
+Make sure you have the following requirements are met as pre-requisites:
 
 - Install [Node.js](https://nodejs.org/)
 - Install npm (Node Package Manager, comes with Node)
